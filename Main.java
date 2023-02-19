@@ -41,7 +41,7 @@ public class Main {
 
             String menuItem = menuItems.get(choice - 1);
             System.out.println("\n\u001B[36mВы выбрали: " + menuItem + "\u001B[0m");
-						System.out.println("\n" + String.format("%s", "-".repeat(98)));
+						System.out.println(String.format("%s", "-".repeat(98)));
 
             if (menuItem.equals("Выход")) {
                 System.out.println("\u001B[31mВыход из приложения\u001B[0m");
@@ -56,6 +56,7 @@ public class Main {
                     OutputTablesToys.displayParticipatingToys();
                     break;
                 case "Добавьте новую игрушку в список":
+										AddToys.addNewToy();
                     break;
                 case "Удалить игрушку из списка":
                     break;
