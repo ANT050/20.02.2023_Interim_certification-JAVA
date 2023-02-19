@@ -10,14 +10,14 @@ public class AddToys {
     File file = new File("toys.csv");
 
     int lastID = 0;
-    double totalPercent = 0; // initialize the total percentage
+    double totalPercent = 0; 
 
     try (Scanner fileScanner = new Scanner(file)) {
         while (fileScanner.hasNextLine()) {
             String line = fileScanner.nextLine();
             String[] fields = line.split(",");
             lastID = Integer.parseInt(fields[0]);
-            totalPercent += Double.parseDouble(fields[3].replace("%", "")); // add the percentage of the toy to the total
+            totalPercent += Double.parseDouble(fields[3].replace("%", ""));
         }
     } catch (IOException e) {
         e.printStackTrace();
