@@ -12,6 +12,15 @@ public class ToyModifier {
         System.out.print("\n\u001B[35mВведите ID игрушки, которую вы хотите изменить: \u001B[0m");
         String id = scanner.nextLine().trim();
 
+        double totalPercentage = 0.0;
+        try (Scanner fileScanner = new Scanner(file)) {
+            while (fileScanner.hasNextLine()) {
+                String line = fileScanner.nextLine();
+                String[] fields = line.split(",");
+                totalPercentage += Double.parseDouble(fields[3].replace("%", ""));
+            }
+        }
+
         try (Scanner fileScanner = new Scanner(file)) {
             while (fileScanner.hasNextLine()) {
                 String line = fileScanner.nextLine();
@@ -59,11 +68,23 @@ public class ToyModifier {
                             break;
                         }
                         try {
-                            Double.parseDouble(percent);
-                            break;
+                            double percentDouble = Double.parseDouble(percent);
+                            if (percentDouble <= 0.0) {
+                                System.out.println("\n" + String.format("%s", "\u001B[31m-\u001B[0m".repeat(98)));
+                                System.out.println("\u001B[31mОшибка: процент розыгрыша должен быть положительным числом!\u001B[0m");
+                                System.out.println(String.format("%s", "\u001B[31m-\u001B[0m".repeat(98)));
+
+                            } else if (percentDouble > 100.0 - totalPercentage + Double.parseDouble(fields[3].replace("%", ""))) {
+                                System.out.println("\n" + String.format("%s", "\u001B[31m-\u001B[0m".repeat(98)));
+                                System.out.println("\u001B[31mОшибка: общая сумма процентов не должна превышать 100%!\u001B[0m");
+                                System.out.println(String.format("%s", "\u001B[31m-\u001B[0m".repeat(98)));
+
+                            } else {
+                                break;
+                        }
                         } catch (NumberFormatException e) {
                             System.out.println("\n" + String.format("%s", "\u001B[31m-\u001B[0m".repeat(98)));
-                            System.out.println("\u001B[31mОшибка: процент розыгрыша должен быть числом!\u001B[0m");
+                            System.out.println("\u001B[31mОшибка: процент розыгрыша должен быть числом или разделитель '.'!\u001B[0m");
                             System.out.println(String.format("%s", "\u001B[31m-\u001B[0m".repeat(98)));
                         }
                     }
