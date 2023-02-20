@@ -5,7 +5,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
 public class AddToys {
-	public static void addNewToy() {
+  public static void addNewToy() {
     Scanner scanner = new Scanner(System.in, "CP866");
     File file = new File("toys.csv");
 
@@ -37,13 +37,13 @@ public class AddToys {
             validQuantity = true;
         } else {
             scanner.next();
-						System.out.println("\n" + String.format("%s", "\u001B[31m-\u001B[0m".repeat(98)));
+            System.out.println("\n" + String.format("%s", "\u001B[31m-\u001B[0m".repeat(98)));
             System.out.println("\u001B[31mНеверный ввод. Пожалуйста, введите число!\u001B[0m");
-						System.out.println(String.format("%s", "\u001B[31m-\u001B[0m".repeat(98)));
+            System.out.println(String.format("%s", "\u001B[31m-\u001B[0m".repeat(98)));
         }
     }
     
-		double percent = 0;
+    double percent = 0;
     boolean validPercent = false;
     while (!validPercent) {
         System.out.print("\u001B[35mВведите процент выпадания новой игрушки (разделитель ','): \u001B[0m");
@@ -59,9 +59,9 @@ public class AddToys {
             }
         } else {
             scanner.next();
-						System.out.println("\n" + String.format("%s", "\u001B[31m-\u001B[0m".repeat(98)));
+            System.out.println("\n" + String.format("%s", "\u001B[31m-\u001B[0m".repeat(98)));
             System.out.println("\u001B[31mНеверный ввод. Пожалуйста, введите число!\u001B[0m");
-						System.out.println(String.format("%s", "\u001B[31m-\u001B[0m".repeat(98)));
+            System.out.println(String.format("%s", "\u001B[31m-\u001B[0m".repeat(98)));
         }
     }
 
@@ -70,7 +70,7 @@ public class AddToys {
     try (FileWriter writer = new FileWriter(file, StandardCharsets.UTF_8, true)) {
         writer.write(String.format("%d,%s,%d,%s%n", newID, name, quantity, formattedPercent));
         System.out.println("\nНовая игрушка добавлена в список.");
-				System.out.println(String.format("%s", "-".repeat(98)));
+        System.out.println(String.format("%s", "-".repeat(98)));
     } catch (IOException e) {
         e.printStackTrace();
     }

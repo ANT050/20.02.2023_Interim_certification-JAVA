@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) {
@@ -11,7 +12,7 @@ public class Main {
         menuItems.add("Отобразить список разыгранных игрушек");
         menuItems.add("Добавьте новую игрушку в список");
         menuItems.add("Удалить игрушку из списка");
-				menuItems.add("Изменить данные игрушки");
+        menuItems.add("Изменить данные игрушки");
         menuItems.add("Начать игру");
         menuItems.add("Выход");
 
@@ -24,8 +25,8 @@ public class Main {
             int choice = 0;
             boolean validInput = false;
             while (!validInput) {
-							System.out.print("\n\u001B[35mВведите число от 1 до " + menuItems.size() + ":\u001B[0m ");
-												
+                System.out.print("\n\u001B[35mВведите число от 1 до " + menuItems.size() + ":\u001B[0m ");
+
                 if (scanner.hasNextInt()) {
                     choice = scanner.nextInt();
                     validInput = (choice >= 1 && choice <= menuItems.size());
@@ -33,16 +34,16 @@ public class Main {
                     scanner.next();
                 }
                 if (!validInput) {
-										System.out.println("\n" + String.format("%s", "\u001B[31m-\u001B[0m".repeat(98)));
+                    System.out.println("\n" + String.format("%s", "\u001B[31m-\u001B[0m".repeat(98)));
                     System.out.println("\u001B[31mНеверный ввод. Пожалуйста, введите целое число от 1 до " + menuItems.size() + ".\u001B[0m");
-										System.out.println(String.format("%s", "\u001B[31m-\u001B[0m".repeat(98)));
+                    System.out.println(String.format("%s", "\u001B[31m-\u001B[0m".repeat(98)));
                 }
             }
             scanner.nextLine();
 
             String menuItem = menuItems.get(choice - 1);
             System.out.println("\n\u001B[36mВы выбрали: " + menuItem + "\u001B[0m");
-						System.out.println(String.format("%s", "-".repeat(98)));
+            System.out.println(String.format("%s", "-".repeat(98)));
 
             if (menuItem.equals("Выход")) {
                 System.out.println("\u001B[31mВыход из приложения\u001B[0m");
@@ -57,14 +58,19 @@ public class Main {
                     OutputTablesToys.displayParticipatingToys();
                     break;
                 case "Добавьте новую игрушку в список":
-										AddToys.addNewToy();
+                    AddToys.addNewToy();
                     break;
                 case "Удалить игрушку из списка":
-								    OutputTablesToys.displayToyList();
-								    RemoveToy.removeToyById();
+                    OutputTablesToys.displayToyList();
+                    RemoveToy.removeToyById();
                     break;
-								case "Изменить данные игрушки":
-										break;
+                case "Изменить данные игрушки":
+                    try {
+                        ToyModifier.modifyToyById();
+                    } catch (IOException e) {
+                        System.out.println("Произошла ошибка при изменении данных: " + e.getMessage());
+                    }
+                    break;
                 case "Начать игру":
                     break;
             }

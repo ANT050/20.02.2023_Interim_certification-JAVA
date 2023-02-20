@@ -30,9 +30,9 @@ public class OutputTablesToys {
             System.out.println("\n" + spaces + "\u001B[33m==== Список всех игрушек участвующих в розыгрыше ====\n\u001B[0m");
             printToyList(br, true);
         } catch (IOException e) {
-						System.out.println("\n" + String.format("%s", "\u001B[31m-\u001B[0m".repeat(98)));
+            System.out.println("\n" + String.format("%s", "\u001B[31m-\u001B[0m".repeat(98)));
             System.out.println("\u001B[31mОшибка чтения файла: " + e.getMessage() + "\u001B[0m");
-						System.out.println(String.format("%s", "\u001B[31m-\u001B[0m".repeat(98)));
+            System.out.println(String.format("%s", "\u001B[31m-\u001B[0m".repeat(98)));
         }
     }
 
@@ -42,9 +42,9 @@ public class OutputTablesToys {
             System.out.println("\n" + spaces + "\u001B[33m==== Список разыгранных игрушек ====\n\u001B[0m");
             printToyList(br, true);
         } catch (IOException e) {
-						System.out.println("\n" + String.format("%s", "\u001B[31m-\u001B[0m".repeat(98)));
+            System.out.println("\n" + String.format("%s", "\u001B[31m-\u001B[0m".repeat(98)));
             System.out.println("\u001B[31mОшибка чтения файла: " + e.getMessage() + "\u001B[0m");
-						System.out.println(String.format("%s", "\u001B[31m-\u001B[0m".repeat(98)));
+            System.out.println(String.format("%s", "\u001B[31m-\u001B[0m".repeat(98)));
         }
     }
 }
