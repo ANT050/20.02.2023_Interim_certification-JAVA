@@ -11,6 +11,7 @@ public class Main {
         menuItems.add("Отобразить список разыгранных игрушек");
         menuItems.add("Добавьте новую игрушку в список");
         menuItems.add("Удалить игрушку из списка");
+				menuItems.add("Изменить данные игрушки");
         menuItems.add("Начать игру");
         menuItems.add("Выход");
 
@@ -59,7 +60,11 @@ public class Main {
 										AddToys.addNewToy();
                     break;
                 case "Удалить игрушку из списка":
+								    OutputTablesToys.displayToyList();
+								    RemoveToy.removeToyById();
                     break;
+								case "Изменить данные игрушки":
+										break;
                 case "Начать игру":
                     break;
             }

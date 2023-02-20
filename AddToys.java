@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class AddToys {
 	public static void addNewToy() {
-    Scanner scanner = new Scanner(System.in);
+    Scanner scanner = new Scanner(System.in, "CP866");
     File file = new File("toys.csv");
 
     int lastID = 0;
