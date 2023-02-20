@@ -72,6 +72,7 @@ public class Main {
                     }
                     break;
                 case "Начать игру":
+                    Game.start();
                     break;
             }
         }
