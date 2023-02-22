@@ -7,6 +7,8 @@ public class OutputTablesToys {
     private static final String TOY_LIST = "toys.csv";
     private static final String PARTICIPATING_TOYS = "played.csv";
 	
+
+    // Функция считывания и вывода данных из файла "toys.csv"
     public static void displayToyList() {
         try (BufferedReader br = new BufferedReader(new FileReader(TOY_LIST, StandardCharsets.UTF_8))) {
             String line;
@@ -22,6 +24,7 @@ public class OutputTablesToys {
         }
     }
 
+    // Функция считывания и вывода данных из файла "played.csv"
     public static void displayParticipatingToys() {
         try (BufferedReader br = new BufferedReader(new FileReader(PARTICIPATING_TOYS, StandardCharsets.UTF_8))) {
             String line;
